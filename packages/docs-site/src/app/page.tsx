@@ -4,7 +4,7 @@ import SectionHeading from "@/components/section-heading";
 import Subhead from "@/components/subhead";
 import { Badge } from "@/components/ui/badge";
 import { highlightCode } from "@/lib/code-highlighter";
-import { usePokemon, usePokemonList } from "pokeapi-sdk";
+import { usePokemonList } from "pokeapi-sdk";
 import { useEffect, useState } from "react";
 import pokemonIntelli from "@/../public/pokemon-intelli.png";
 import Image from "next/image";
@@ -21,11 +21,7 @@ export default function Home() {
   const [pokemonListCode, setPokemonListCode] = useState<string>("");
   const [generationCode, setGenerationCode] = useState<string>("");
   const [testCommand, setTestCommand] = useState<string>("");
-  const {
-    pokemonList,
-    loading: pokemonLoading,
-    error: pokemonError,
-  } = usePokemonList(3, 0);
+  const { pokemonList, loading, error } = usePokemonList(3, 0);
   console.log(pokemonList);
 
   useEffect(() => {
@@ -179,6 +175,8 @@ export default function Component() {
           ))}
         </div>
       )}
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
       <Subhead>Overview</Subhead>
       <SectionHeading id="introduction">Introduction</SectionHeading>
       <div className="mt-4 text-lg font-medium">
