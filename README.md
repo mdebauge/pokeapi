@@ -4,7 +4,22 @@ This is a simple TypeScript SDK for fetching Pokemon data from the PokeAPI. It's
 
 ![PokeAPI SDK Docs](packages/docs-site/public/docs-site.png)
 
-#### For richer docs experience, clone the repository and run the docs-site locally by running the following command at the root of the repository:
+#### For richer docs experience, clone the repository and run the docs-site locally.
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Build the SDK:
+
+```bash
+cd packages/pokeapi-sdk
+npm run build
+```
+
+Run the docs-site (at the root of the repository):
 
 ```bash
 npm run dev
