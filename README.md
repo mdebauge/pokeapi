@@ -1,11 +1,13 @@
-# PokeAPI SDK for Next.js Projects
+# PokeAPI SDK
 
 This is a simple TypeScript SDK for fetching Pokemon data from the PokeAPI. It's designed to be used in Next.js projects and provides a context provider and hooks to access the Poke-data, allowing you to just focus on building your awesome app.
 
-For richer docs experience, clone the repository and run the docs-site locally by running
+## For richer docs experience, clone the repository and run the docs-site locally by running the following command at the root of the repository:
 
 ```bash
 npm run dev
 ```
 
-at the root of the repository.
+## PokeAPI SDK Readme
+
+I suggest checking out the richer docs experience above...but you can always access the SDK's README [here](./packages/pokeapi-sdk/README.md).
