@@ -5,9 +5,5 @@ export type {
   Generation,
   PokeAPIConfig,
 } from "./PokeAPI";
-export {
-  PokemonProvider,
-  usePokemon,
-  usePokemonList,
-  useGeneration,
-} from "./contexts/PokemonProvider";
+export { PokemonProvider } from "./contexts/PokemonProvider";
+export { usePokemon, usePokemonList, useGeneration } from "./hooks/hooks";
