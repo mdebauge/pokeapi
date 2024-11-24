@@ -12,4 +12,4 @@ npm run dev
 
 ## PokeAPI SDK Readme
 
-I suggest checking out the richer docs experience above...but you can always access the SDK's README [here](./packages/pokeapi-sdk/README.md).
+I suggest checking out the richer docs experience above...but you can always access the full SDK's documentation [here](./packages/pokeapi-sdk/README.md).

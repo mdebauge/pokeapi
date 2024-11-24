@@ -88,7 +88,7 @@ const routes: Route[] = [
     ],
   },
   {
-    label: "Functions",
+    label: "More",
     sections: [
       {
         label: "PokemonProvider",
