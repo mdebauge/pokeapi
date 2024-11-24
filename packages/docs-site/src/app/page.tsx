@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { highlightCode } from "@/lib/code-highlighter";
 import { usePokemon } from "pokeapi-sdk";
 import { useEffect, useState } from "react";
+import pokemonIntelli from "@/../public/pokemon-intelli.png";
+import Image from "next/image";
 
 export default function Home() {
   const [sdkLinkCode, setSdkLinkCode] = useState<string>("");
@@ -164,8 +166,21 @@ export default function Component() {
       <SectionHeading id="introduction">Introduction</SectionHeading>
       <p className="mt-4">
         This is a simple TypeScript SDK for fetching Pokemon data from the
-        PokeAPI. It&apos;s designed to be used in Next.js projects.
-      </p>{" "}
+        PokeAPI. It&apos;s designed to be used in Next.js projects and provides
+        a context provider and hooks to access the Poke-data, allowing you to
+        just focus on building your awesome app.
+      </p>
+      <div className="mt-4 flex items-center justify-center gap-8 p-8">
+        <div className="w-1/3">
+          <p className="text-md font-semibold">
+            It&apos;s also type-friendly, letting you access suggestions and
+            information about the Pokemon data.
+          </p>
+        </div>
+        <div className="mt-4 w-2/3 flex justify-center rounded-xl bg-[#181818] p-4 border border-zinc-800 overflow-hidden">
+          <Image src={pokemonIntelli} alt="Pokemon IntelliSense" />
+        </div>
+      </div>
       {pokemonLoading && <p>Loading...</p>}
       {pokemonError && <p>Error: {pokemonError.message}</p>}
       {pokemon && <p>Loaded Pokemon: {pokemon.name}</p>}
