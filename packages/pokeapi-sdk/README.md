@@ -1,6 +1,19 @@
-# PokeAPI SDK for Next.js Projects
+# PokeAPI SDK
 
-This is a simple TypeScript SDK for fetching Pokemon data from the PokeAPI. It's designed to be used in Next.js projects.
+This is a simple TypeScript SDK for fetching Pokemon data from the PokeAPI. It's designed to be used in Next.js projects. It provides a context provider and hooks to access the Poke-data, allowing you to just focus on building your awesome app.
+
+### Decision & Benefits
+
+- Centralized state management for Pokemon data and shared API instance across components so you can avoid prop drilling.
+- Reusable hooks for fetching Pokemon data, generation data, and list of Pokemon.
+- Built-in loading and error states for each hook.
+- TypeScript types for Pokemon, PokemonList, and Generation data, letting you access suggestions and information about the Pokemon data.
+
+### Roadmap (Some things that could be expanded on)
+
+- Continue building out the types to cover all data.
+- Add more hooks for other PokeAPI endpoints (evolution chains, etc.)
+- Add exported utility functions for common tasks needed when working with Pokemon data like: formatting Pokemon names, color variables mapped to Pokemon types, etc.
 
 ## Installation
 
@@ -79,12 +92,21 @@ export default function Component() {
 }
 ```
 
+## Testing
+
+To run the SDK tests, navigate to the pokeapi-sdk root directory and run:
+
+```bash
+npm test
+```
+
 ## API Documentation
 
 <!-- API_DOCS_START -->
+
 **pokeapi-sdk** • **Docs**
 
-***
+---
 
 # pokeapi-sdk
 
