@@ -1,5 +1,6 @@
 import Image from "next/image";
 import pokeball from "../../public/pokeball.svg";
+import { GitHubIcon } from "../app/icons/github";
 
 export function Header() {
   return (
@@ -8,7 +9,12 @@ export function Header() {
         <Image src={pokeball} alt="Pokeball" width={24} height={24} />
         PokeAPI SDK
       </a>
-      <a href="https://github.com/mdebauge/pokeapi-sdk">Github</a>
+      <a
+        className="text-zinc-500 hover:text-zinc-400 transition-colors"
+        href="https://github.com/mdebauge/pokeapi-sdk"
+      >
+        <GitHubIcon className="w-5 h-5" />
+      </a>
     </header>
   );
 }

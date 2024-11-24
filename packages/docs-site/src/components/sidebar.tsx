@@ -48,22 +48,52 @@ const routes: Route[] = [
     ],
   },
   {
-    label: "More",
+    label: "Classes",
     sections: [
       {
-        label: "Classes",
+        label: "PokeAPI Class",
         route:
           "https://github.com/mdebauge/pokeapi/blob/main/packages/pokeapi-sdk/docs/classes/PokeAPI.md",
         icon: ExternalLink,
       },
+    ],
+  },
+  {
+    label: "Types",
+    sections: [
       {
-        label: "Functions",
-        route: "/functions",
+        label: "Generation Type",
+        route:
+          "https://github.com/mdebauge/pokeapi/blob/main/packages/pokeapi-sdk/docs/type-aliases/Generation.md",
         icon: ExternalLink,
       },
       {
-        label: "Types",
-        route: "/types",
+        label: "PokeAPIConfig Type",
+        route:
+          "https://github.com/mdebauge/pokeapi/blob/main/packages/pokeapi-sdk/docs/type-aliases/PokeAPIConfig.md",
+        icon: ExternalLink,
+      },
+      {
+        label: "Pokemon Type",
+        route:
+          "https://github.com/mdebauge/pokeapi/blob/main/packages/pokeapi-sdk/docs/type-aliases/Pokemon.md",
+        icon: ExternalLink,
+      },
+      {
+        label: "PokemonList Type",
+        route:
+          "https://github.com/mdebauge/pokeapi/blob/main/packages/pokeapi-sdk/docs/type-aliases/PokemonList.md",
+        icon: ExternalLink,
+      },
+    ],
+  },
+  {
+    label: "Functions",
+    sections: [
+      {
+        label: "PokemonProvider",
+        route:
+          "https://github.com/mdebauge/pokeapi/blob/main/packages/pokeapi-sdk/docs/functions/PokemonProvider.md",
         icon: ExternalLink,
       },
     ],
