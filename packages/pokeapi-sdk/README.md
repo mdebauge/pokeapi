@@ -79,13 +79,12 @@ export default function Component() {
 }
 ```
 
-##API Documentation
+## API Documentation
 
 <!-- API_DOCS_START -->
-
 **pokeapi-sdk** • **Docs**
 
----
+***
 
 # pokeapi-sdk
 
@@ -93,13 +92,10 @@ export default function Component() {
 
 - [PokeAPI](docs/classes/PokeAPI.md)
 
-## Interfaces
-
-- [PokeAPIConfig](docs/interfaces/PokeAPIConfig.md)
-
 ## Type Aliases
 
 - [Generation](docs/type-aliases/Generation.md)
+- [PokeAPIConfig](docs/type-aliases/PokeAPIConfig.md)
 - [Pokemon](docs/type-aliases/Pokemon.md)
 - [PokemonList](docs/type-aliases/PokemonList.md)
 

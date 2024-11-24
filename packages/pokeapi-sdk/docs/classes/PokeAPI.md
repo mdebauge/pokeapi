@@ -26,7 +26,7 @@ Creates a new PokeAPI instance
 
 #### Parameters
 
-• **config?**: [`PokeAPIConfig`](../interfaces/PokeAPIConfig.md)
+• **config?**: [`PokeAPIConfig`](../type-aliases/PokeAPIConfig.md)
 
 Optional configuration options
 
@@ -36,7 +36,7 @@ Optional configuration options
 
 #### Defined in
 
-[PokeAPI.ts:70](https://github.com/mdebauge/pokeapi-sdk/blob/636d70dd9aee1d838132b65ca0a5299b6ec48403/src/PokeAPI.ts#L70)
+[PokeAPI.ts:70](https://github.com/mdebauge/pokeapi/blob/bda097c5f0bf5f38c8f60e454f9081d34fd75200/packages/pokeapi-sdk/src/PokeAPI.ts#L70)
 
 ## Methods
 
@@ -54,7 +54,7 @@ Optional configuration options
 
 #### Defined in
 
-[PokeAPI.ts:132](https://github.com/mdebauge/pokeapi-sdk/blob/636d70dd9aee1d838132b65ca0a5299b6ec48403/src/PokeAPI.ts#L132)
+[PokeAPI.ts:132](https://github.com/mdebauge/pokeapi/blob/bda097c5f0bf5f38c8f60e454f9081d34fd75200/packages/pokeapi-sdk/src/PokeAPI.ts#L132)
 
 ***
 
@@ -90,7 +90,7 @@ console.log(pikachu.name); // 'pikachu'
 
 #### Defined in
 
-[PokeAPI.ts:103](https://github.com/mdebauge/pokeapi-sdk/blob/636d70dd9aee1d838132b65ca0a5299b6ec48403/src/PokeAPI.ts#L103)
+[PokeAPI.ts:103](https://github.com/mdebauge/pokeapi/blob/bda097c5f0bf5f38c8f60e454f9081d34fd75200/packages/pokeapi-sdk/src/PokeAPI.ts#L103)
 
 ***
 
@@ -130,4 +130,4 @@ console.log(list.results.length); // 10
 
 #### Defined in
 
-[PokeAPI.ts:122](https://github.com/mdebauge/pokeapi-sdk/blob/636d70dd9aee1d838132b65ca0a5299b6ec48403/src/PokeAPI.ts#L122)
+[PokeAPI.ts:122](https://github.com/mdebauge/pokeapi/blob/bda097c5f0bf5f38c8f60e454f9081d34fd75200/packages/pokeapi-sdk/src/PokeAPI.ts#L122)

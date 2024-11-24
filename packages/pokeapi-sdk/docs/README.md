@@ -8,13 +8,10 @@
 
 - [PokeAPI](classes/PokeAPI.md)
 
-## Interfaces
-
-- [PokeAPIConfig](interfaces/PokeAPIConfig.md)
-
 ## Type Aliases
 
 - [Generation](type-aliases/Generation.md)
+- [PokeAPIConfig](type-aliases/PokeAPIConfig.md)
 - [Pokemon](type-aliases/Pokemon.md)
 - [PokemonList](type-aliases/PokemonList.md)
 

@@ -1,12 +1,23 @@
-import Link from "next/dist/client/link";
+import { ExternalLink } from "lucide-react";
 
-const routes = [
+type Route = {
+  label: string;
+  sections: Section[];
+};
+
+type Section = {
+  label: string;
+  route: string;
+  icon?: React.ElementType;
+};
+
+const routes: Route[] = [
   {
     label: "Overview",
     sections: [
       {
         label: "Introduction",
-        route: "/introduction",
+        route: "#introduction",
       },
     ],
   },
@@ -15,28 +26,45 @@ const routes = [
     sections: [
       {
         label: "Installation",
-        route: "/installation",
+        route: "#installation",
       },
       {
         label: "Quick Start",
-        route: "/quick-start",
+        route: "#quick-start",
       },
     ],
   },
   {
-    label: "API Reference",
+    label: "Reference",
+    sections: [
+      {
+        label: "Hooks",
+        route: "#hooks",
+      },
+      {
+        label: "Testing",
+        route: "#testing",
+      },
+    ],
+  },
+  {
+    label: "More",
     sections: [
       {
         label: "Classes",
-        route: "/classes",
+        route:
+          "https://github.com/mdebauge/pokeapi/blob/main/packages/pokeapi-sdk/docs/classes/PokeAPI.md",
+        icon: ExternalLink,
       },
       {
         label: "Functions",
         route: "/functions",
+        icon: ExternalLink,
       },
       {
         label: "Types",
         route: "/types",
+        icon: ExternalLink,
       },
     ],
   },
@@ -55,10 +83,23 @@ export function Sidebar() {
               <ul className="flex flex-col">
                 {route.sections.map((section) => (
                   <li
-                    className="px-4 py-2 rounded-md hover:cursor-pointer hover:bg-zinc-700/40"
+                    className={`px-4 py-2 rounded-md hover:cursor-pointer ${
+                      section.icon
+                        ? "hover:text-zinc-300"
+                        : "hover:bg-zinc-700/40"
+                    }`}
                     key={section.route}
                   >
-                    <Link href={section.route}>{section.label}</Link>
+                    <a
+                      href={section.route}
+                      className="flex items-center"
+                      target={section.icon ? "_blank" : "_self"}
+                    >
+                      {section.label}
+                      {section.icon && (
+                        <section.icon className="w-4 h-4 inline-block ml-2 text-zinc-600" />
+                      )}
+                    </a>
                   </li>
                 ))}
               </ul>

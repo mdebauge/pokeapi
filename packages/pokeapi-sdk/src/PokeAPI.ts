@@ -40,14 +40,14 @@ export type Generation = {
 
 /**
  * Configuration options for the Pokemon API client
- * @interface PokeAPIConfig
+ * @type PokeAPIConfig
  */
-export interface PokeAPIConfig {
+export type PokeAPIConfig = {
   /** Base URL for the API */
   baseUrl?: string;
   /** Timeout in milliseconds */
   timeout?: number;
-}
+};
 
 /**
  * Client for interacting with the Pokemon API
