@@ -4,10 +4,11 @@ import SectionHeading from "@/components/section-heading";
 import Subhead from "@/components/subhead";
 import { Badge } from "@/components/ui/badge";
 import { highlightCode } from "@/lib/code-highlighter";
-import { usePokemon } from "pokeapi-sdk";
+import { usePokemon, usePokemonList } from "pokeapi-sdk";
 import { useEffect, useState } from "react";
 import pokemonIntelli from "@/../public/pokemon-intelli.png";
 import Image from "next/image";
+import PokemonCard from "@/components/pokemon-card";
 
 export default function Home() {
   const [sdkLinkCode, setSdkLinkCode] = useState<string>("");
@@ -21,10 +22,11 @@ export default function Home() {
   const [generationCode, setGenerationCode] = useState<string>("");
   const [testCommand, setTestCommand] = useState<string>("");
   const {
-    pokemon,
+    pokemonList,
     loading: pokemonLoading,
     error: pokemonError,
-  } = usePokemon("pikachu");
+  } = usePokemonList(3, 0);
+  console.log(pokemonList);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -160,30 +162,73 @@ export default function Component() {
   }, []);
 
   return (
-    <div className="pt-6 pb-40 px-8 max-w-4xl">
-      <h1 className="text-4xl font-bold">PokeAPI SDK</h1>
+    <div className="pt-6 pb-40 px-8 max-w-4xl mx-auto">
+      <h1 className="text-4xl font-bold mt-8">PokeAPI SDK</h1>
+      {pokemonList && (
+        <div className="flex flex-col md:flex-row justify-between my-12 lg:mx-8">
+          {pokemonList.results.map((pokemon, index) => (
+            <PokemonCard
+              key={index}
+              pokemonName={pokemon.name}
+              className={
+                index % 2 === 0
+                  ? "-rotate-6 scale-95 hover:rotate-0 hover:scale-100"
+                  : "rotate-6 scale-95 hover:rotate-0 hover:scale-100"
+              }
+            />
+          ))}
+        </div>
+      )}
       <Subhead>Overview</Subhead>
       <SectionHeading id="introduction">Introduction</SectionHeading>
-      <p className="mt-4">
+      <div className="mt-4 text-lg font-medium">
         This is a simple TypeScript SDK for fetching Pokemon data from the
-        PokeAPI. It&apos;s designed to be used in Next.js projects and provides
-        a context provider and hooks to access the Poke-data, allowing you to
-        just focus on building your awesome app.
-      </p>
+        PokeAPI. It&apos;s designed to be used in{" "}
+        <Badge variant="outline">Next.js</Badge> projects. It provides a context
+        provider and hooks to access the Poke-data, allowing you to just focus
+        on building your awesome app.
+      </div>
+      <h3 className="my-4 text-xl font-bold">Decision & Benefits</h3>
+      <ul className="list-disc list-outside mx-4 space-y-1">
+        <li>
+          Centralized state management for Pokemon data and shared API instance
+          across components so you can avoid prop drilling.
+        </li>
+        <li>
+          Reusable hooks for fetching Pokemon data, generation data, and list of
+          Pokemon.
+        </li>
+        <li>Built-in loading and error states for each hook.</li>
+        <li>TypeScript types for Pokemon, PokemonList, and Generation data:</li>
+      </ul>
       <div className="mt-4 flex items-center justify-center gap-8 p-8">
         <div className="w-1/3">
-          <p className="text-md font-semibold">
-            It&apos;s also type-friendly, letting you access suggestions and
-            information about the Pokemon data.
+          <p className="text-sm font-semibold">
+            The type-friendly SDK lets you access suggestions and information
+            about the Pokemon data.
           </p>
         </div>
         <div className="mt-4 w-2/3 flex justify-center rounded-xl bg-[#181818] p-4 border border-zinc-800 overflow-hidden">
           <Image src={pokemonIntelli} alt="Pokemon IntelliSense" />
         </div>
       </div>
-      {pokemonLoading && <p>Loading...</p>}
-      {pokemonError && <p>Error: {pokemonError.message}</p>}
-      {pokemon && <p>Loaded Pokemon: {pokemon.name}</p>}
+      <h3 className="my-4 text-xl font-bold">
+        Roadmap{" "}
+        <span className="text-base font-normal text-zinc-400">
+          (Some things that could be expanded on)
+        </span>
+      </h3>
+      <ul className="list-disc list-outside mx-4 space-y-1">
+        <li>Continue building out the types to cover all data.</li>
+        <li>
+          Add more hooks for other PokeAPI endpoints (evolution chains, etc.)
+        </li>
+        <li>
+          Add exported utility functions for common tasks needed when working
+          with Pokemon data like: formatting Pokemon names, color variables
+          mapped to Pokemon types, etc.
+        </li>
+      </ul>
       <Subhead className="mt-16">Getting Started</Subhead>
       <SectionHeading id="installation">Installation</SectionHeading>
       <div className="mt-4">

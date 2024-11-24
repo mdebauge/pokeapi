@@ -34,7 +34,7 @@ export default function RootLayout({
         <PokemonProvider>
           <Header />
           <Sidebar />
-          <main className="lg:ml-64 mt-[65px]">{children}</main>
+          <main className="lg:mx-64 mt-[65px]">{children}</main>
         </PokemonProvider>
       </body>
     </html>

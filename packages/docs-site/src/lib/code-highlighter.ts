@@ -34,12 +34,6 @@ export async function highlightCode(
           return node;
         },
         line(node: any, line: number) {
-          console.log(
-            "Processing line:",
-            line,
-            "Is highlight?:",
-            options.highlights?.includes(line)
-          );
           if (options.highlights?.includes(line)) {
             node.properties.style = `
         background-color: rgba(200, 200, 255, 0.08);
