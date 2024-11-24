@@ -103,7 +103,7 @@ const routes: Route[] = [
 export function Sidebar() {
   return (
     <>
-      <nav className="fixed top-[65px] h-screen w-64 py-6">
+      <nav className="fixed top-[65px] h-screen w-64 py-6 hidden lg:block">
         <ul className="flex flex-col gap-4 px-4">
           {routes.map((route) => (
             <li key={route.label}>
