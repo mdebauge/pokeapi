@@ -94,7 +94,7 @@ export default function Component() {
 
 ## Testing
 
-To run the SDK tests, navigate to the pokeapi-sdk root directory and run:
+To run the SDK tests, navigate to the `pokeapi-sdk` root directory and run:
 
 ```bash
 npm test
