@@ -123,8 +123,10 @@ export class PokeAPI {
     limit?: number;
     offset?: number;
   }): Promise<PokemonList> {
+    const limit = options?.limit ?? 20;
+    const offset = options?.offset ?? 0;
     return await this.fetch<PokemonList>(
-      `pokemon?limit=${options?.limit || 20}&offset=${options?.offset || 0}`
+      `pokemon?limit=${limit}&offset=${offset}`
     );
   }
 

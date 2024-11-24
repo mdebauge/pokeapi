@@ -15,60 +15,71 @@ export const PokemonContext = React.createContext<
   PokemonContextType | undefined
 >(undefined);
 
-if (typeof window !== "undefined") {
-  PokemonContext.displayName = "PokemonContext";
-}
-
 export function PokemonProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<Error | null>(null);
-  const api = new PokeAPI();
 
-  const getPokemon = async (nameOrId: string | number) => {
+  // Move API instance to useRef to maintain reference across renders
+  const apiRef = React.useRef(new PokeAPI());
+
+  const getPokemon = React.useCallback(async (nameOrId: string | number) => {
     try {
       setLoading(true);
       setError(null);
-      return await api.getPokemon(nameOrId);
+      return await apiRef.current.getPokemon(nameOrId);
     } catch (err) {
       setError(err instanceof Error ? err : new Error("Unknown error"));
       throw err;
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const listPokemon = async (limit?: number, offset?: number) => {
-    try {
-      setLoading(true);
-      setError(null);
-      return await api.listPokemon({ limit, offset });
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error("Unknown error"));
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  };
+  const listPokemon = React.useCallback(
+    async (limit?: number, offset?: number) => {
+      try {
+        setLoading(true);
+        setError(null);
+        return await apiRef.current.listPokemon({ limit, offset });
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error("Unknown error"));
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
 
-  const getGeneration = async (generation: string | number) => {
-    try {
-      setLoading(true);
-      setError(null);
-      return await api.getGeneration(generation);
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error("Unknown error"));
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  };
+  const getGeneration = React.useCallback(
+    async (generation: string | number) => {
+      try {
+        setLoading(true);
+        setError(null);
+        return await apiRef.current.getGeneration(generation);
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error("Unknown error"));
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
+
+  const value = React.useMemo(
+    () => ({
+      getPokemon,
+      listPokemon,
+      getGeneration,
+      loading,
+      error,
+    }),
+    [getPokemon, listPokemon, getGeneration, loading, error]
+  );
 
   return (
-    <PokemonContext.Provider
-      value={{ getPokemon, listPokemon, getGeneration, loading, error }}
-    >
-      {children}
-    </PokemonContext.Provider>
+    <PokemonContext.Provider value={value}>{children}</PokemonContext.Provider>
   );
 }
 
@@ -106,10 +117,26 @@ export function usePokemonList(limit?: number, offset?: number) {
   }
 
   React.useEffect(() => {
-    context
-      .listPokemon(limit, offset)
-      .then(setPokemonList)
-      .catch(() => setPokemonList(null));
+    let isMounted = true;
+
+    const fetchData = async () => {
+      try {
+        const data = await context.listPokemon(limit, offset);
+        if (isMounted) {
+          setPokemonList(data);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setPokemonList(null);
+        }
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [limit, offset, context.listPokemon]);
 
   return {
